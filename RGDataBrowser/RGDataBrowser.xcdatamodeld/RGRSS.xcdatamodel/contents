@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="RGObject" representedClassName="RGObject" syncable="YES">
+        <attribute name="articleLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="detailHTML" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageFull" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageThumbnail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nextLevel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfSubentries" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="parentId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RGObject" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

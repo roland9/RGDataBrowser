@@ -2,11 +2,12 @@
 //  RGDetailViewController.m
 //  RGDataBrowser
 //
-//  Created by RolandG on 11/02/2014.
-//  Copyright (c) 2014 mapps. All rights reserved.
+//  Created by Roland on 01/06/2013.
+//  Copyright (c) 2013 RG. All rights reserved.
 //
 
 #import "RGDetailViewController.h"
+
 
 @interface RGDetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -35,10 +36,23 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+    if (self.detailItem && [self.detailItem valueForKey:@"title"]) {
+        self.navigationItem.title = [[self.detailItem valueForKey:@"title"] description];
+    }
+    
+    if ([self.detailItem valueForKey:@"guid"]) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.detailItem valueForKey:@"guid"]]]];
+
+    } else if ([self.detailItem valueForKey:@"html"]) {
+        [self.webView loadHTMLString:[self.detailItem valueForKey:@"html"] baseURL:nil];
+    
+    } else if ([self.detailItem valueForKey:@"link"]) {
+        NSString *escapedLink = [[self.detailItem valueForKey:@"link"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:escapedLink]];
+        [self.webView loadRequest:request];
     }
 }
+
 
 - (void)viewDidLoad
 {
