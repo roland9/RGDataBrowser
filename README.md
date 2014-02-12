@@ -14,8 +14,8 @@ This project can be used as a starting point for simple apps that show structure
 For the sample project, I've compiled an (incomplete and potentially error-prone) spreadsheet of countries and cities. There are links to show national flags and wikipedia entries.
 
 Steps if you want to try it out:
-1) git clone https://github.com/roland9/RGDataBrowser.git
-2) cd RGDataBrowser; pod install   (you need cocoapods)
-3) open RGDataBrowser.xcworkspace/
+* git clone https://github.com/roland9/RGDataBrowser.git
+* cd RGDataBrowser; pod install   (you need cocoapods)
+* open RGDataBrowser.xcworkspace/
 
 ![Screenshot](http://bit.ly/1fgKR1S)
