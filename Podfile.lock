@@ -24,6 +24,11 @@ PODS:
   - CocoaLumberjack/Core (1.8.0)
   - CocoaLumberjack/Extensions (1.8.0):
     - CocoaLumberjack/Core
+  - Kiwi/ARC (2.2.3)
+  - Kiwi/NonARC (2.2.3)
+  - Kiwi/XCTest (2.2.3):
+    - Kiwi/ARC
+    - Kiwi/NonARC
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
@@ -33,6 +38,7 @@ DEPENDENCIES:
   - AFNetworking
   - BlockRSSParser
   - CocoaLumberjack
+  - Kiwi/XCTest
   - MagicalRecord
   - NullSafe
 
@@ -40,6 +46,7 @@ SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
   BlockRSSParser: 20fa86139f2c279163112cc942158ace23b01b05
   CocoaLumberjack: 6ed94046d2ca7fde03a73b3d01b8cfc56574b314
+  Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   NullSafe: ec359e864f3b8d9c2d81aaa2bdbac8280bba1be2
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E408E08B2F341839688AD69 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F66F15D3C85644A6B31DA172 /* libPods.a */; };
+		7F764D0EE3234D979C7664B2 /* libPods-RGDataBrowserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DB856945DC49118D21B012 /* libPods-RGDataBrowserTests.a */; };
 		AB42D81A18AA908F000B5AA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB42D81918AA908F000B5AA0 /* Foundation.framework */; };
 		AB42D81C18AA908F000B5AA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB42D81B18AA908F000B5AA0 /* CoreGraphics.framework */; };
 		AB42D81E18AA908F000B5AA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB42D81D18AA908F000B5AA0 /* UIKit.framework */; };
@@ -47,6 +48,7 @@
 		AB42D8C718AA9515000B5AA0 /* RGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42D89018AA9515000B5AA0 /* RGTableViewController.m */; };
 		AB42D8E918AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB42D8E718AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld */; };
 		AB42D8EA18AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB42D8E718AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld */; };
+		ABFA866318AD2B7D00A17202 /* RGSampleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00DB856945DC49118D21B012 /* libPods-RGDataBrowserTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RGDataBrowserTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2069F75E38C74BCCB04DFE15 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RGDataBrowserTests.xcconfig"; path = "Pods/Pods-RGDataBrowserTests.xcconfig"; sourceTree = "<group>"; };
 		AB42D81618AA908F000B5AA0 /* RGDataBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGDataBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB42D81918AA908F000B5AA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB42D81B18AA908F000B5AA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,6 +106,7 @@
 		AB42D89018AA9515000B5AA0 /* RGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGTableViewController.m; sourceTree = "<group>"; };
 		AB42D89118AA9515000B5AA0 /* RGBaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBaseTVC.h; sourceTree = "<group>"; };
 		AB42D8E818AA966E000B5AA0 /* RGRSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RGRSS.xcdatamodel; sourceTree = "<group>"; };
+		ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSampleSpec.m; sourceTree = "<group>"; };
 		F66F15D3C85644A6B31DA172 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +131,7 @@
 				AB42D84718AA908F000B5AA0 /* CoreData.framework in Frameworks */,
 				AB42D84618AA908F000B5AA0 /* UIKit.framework in Frameworks */,
 				AB42D84518AA908F000B5AA0 /* Foundation.framework in Frameworks */,
+				7F764D0EE3234D979C7664B2 /* libPods-RGDataBrowserTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +146,7 @@
 				AB42D81818AA908F000B5AA0 /* Frameworks */,
 				AB42D81718AA908F000B5AA0 /* Products */,
 				2069F75E38C74BCCB04DFE15 /* Pods.xcconfig */,
+				7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +168,7 @@
 				AB42D81F18AA908F000B5AA0 /* CoreData.framework */,
 				AB42D84318AA908F000B5AA0 /* XCTest.framework */,
 				F66F15D3C85644A6B31DA172 /* libPods.a */,
+				00DB856945DC49118D21B012 /* libPods-RGDataBrowserTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				AB42D85018AA908F000B5AA0 /* RGDataBrowserTests.m */,
+				ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */,
 				AB42D84B18AA908F000B5AA0 /* Supporting Files */,
 			);
 			path = RGDataBrowserTests;
@@ -279,9 +288,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB42D85718AA908F000B5AA0 /* Build configuration list for PBXNativeTarget "RGDataBrowserTests" */;
 			buildPhases = (
+				299DA4F00DAE491EA340216E /* Check Pods Manifest.lock */,
 				AB42D83E18AA908F000B5AA0 /* Sources */,
 				AB42D83F18AA908F000B5AA0 /* Frameworks */,
 				AB42D84018AA908F000B5AA0 /* Resources */,
+				F598E2D48E16420FAFCE4B07 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,6 +363,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		299DA4F00DAE491EA340216E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		2F3E427E79414D0FA7D818DD /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -380,6 +406,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F598E2D48E16420FAFCE4B07 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-RGDataBrowserTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -420,6 +461,7 @@
 				AB42D88218AA9507000B5AA0 /* RGObject.m in Sources */,
 				AB42D8C118AA9515000B5AA0 /* RGItemCell.m in Sources */,
 				AB42D8EA18AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */,
+				ABFA866318AD2B7D00A17202 /* RGSampleSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +615,7 @@
 		};
 		AB42D85818AA908F000B5AA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RGDataBrowser.app/RGDataBrowser";
@@ -596,6 +639,7 @@
 		};
 		AB42D85918AA908F000B5AA0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RGDataBrowser.app/RGDataBrowser";

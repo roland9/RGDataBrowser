@@ -6,6 +6,6 @@ pod 'CocoaLumberjack'
 pod 'NullSafe'
 pod 'BlockRSSParser'
 
-# target :RGDataBrowserTestsXC, :exclusive => true do
-# pod 'Kiwi/XCTest'
-# end
+target :RGDataBrowserTests, :exclusive => true do
+	pod 'Kiwi/XCTest'
+end
