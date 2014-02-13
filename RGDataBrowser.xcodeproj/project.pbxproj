@@ -138,6 +138,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB2FCAEE18AD2CFC00817B8C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB42D88B18AA9515000B5AA0 /* RGItemCell.m */,
+				AB42D88C18AA9515000B5AA0 /* RGItemCell.xib */,
+				AB42D88E18AA9515000B5AA0 /* RGItemCell+ConfigureForItem.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		AB2FCAEF18AD2D0A00817B8C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AB42D88518AA9515000B5AA0 /* RGConfigData.m */,
+				AB42D88718AA9515000B5AA0 /* RGFeedManager.m */,
+				AB42D88918AA9515000B5AA0 /* RGHTTPSessionManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		AB42D80D18AA908F000B5AA0 = {
 			isa = PBXGroup;
 			children = (
@@ -180,13 +200,9 @@
 				AB42D82B18AA908F000B5AA0 /* RGAppDelegate.m */,
 				AB42D82D18AA908F000B5AA0 /* Main_iPhone.storyboard */,
 				AB42D83018AA908F000B5AA0 /* Main_iPad.storyboard */,
+				AB2FCAEE18AD2CFC00817B8C /* Cells */,
 				AB42D8EB18AA96FB000B5AA0 /* VCs */,
-				AB42D88518AA9515000B5AA0 /* RGConfigData.m */,
-				AB42D88718AA9515000B5AA0 /* RGFeedManager.m */,
-				AB42D88918AA9515000B5AA0 /* RGHTTPSessionManager.m */,
-				AB42D88B18AA9515000B5AA0 /* RGItemCell.m */,
-				AB42D88C18AA9515000B5AA0 /* RGItemCell.xib */,
-				AB42D88E18AA9515000B5AA0 /* RGItemCell+ConfigureForItem.m */,
+				AB2FCAEF18AD2D0A00817B8C /* Managers */,
 				AB42D8E718AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld */,
 				AB42D85A18AA9507000B5AA0 /* CoreDataEntities */,
 				AB42D83C18AA908F000B5AA0 /* Images.xcassets */,
