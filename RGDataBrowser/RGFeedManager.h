@@ -13,18 +13,11 @@
 
 @interface RGFeedManager : NSObject <NSXMLParserDelegate>
 
-//@property (nonatomic, readonly, strong) NSArray *dataEntries;
-- (NSArray *)dataEntries;
-
 @property (nonatomic, readonly, strong) NSArray *configDataEntries;
 
-
+- (NSArray *)dataEntries;
 - (NSArray *)itemsWithParentId:(NSString *)theParentId;
 - (RGObject *)objectWithItemId:(NSString *)theItemId;
-
-//- (void)reloadAllChannels;
-//- (void)reloadChannel:(RGChannel *)channel;
-//- (void)createTestEnvironment;
 
 - (void)loadDataURLString:(NSString *)theURLString;
 - (void)loadConfigDataURLString:(NSString *)theURLString;

@@ -27,19 +27,6 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 @implementation RGFeedManager
 
-////////////////////////////////////////////////////////////////////
-# pragma mark - NSXMLParserDelegate
-
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-    DDLogInfo(@"%s", __FUNCTION__);
-
-}
-
-
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    DDLogInfo(@"%s: elementName=%@", __FUNCTION__, elementName);
-
-}
 
 ////////////////////////////////////////////////////////////////////
 # pragma mark - Public
@@ -61,44 +48,6 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
     return [RGObject MR_findFirstByAttribute:@"itemId" withValue:theItemId];
 }
-
-
-//- (void)reloadChannel:(RGChannel *)channel {
-//    DDLogInfo(@"%s", __FUNCTION__);
-//
-//#warning fix the hard coded URLs
-//    [[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://www.spiegel.de/"]] getPath:@"schlagzeilen/tops/index.rss" parameters:NULL success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSError *error;
-//        FPFeed *feed = [FPParser parsedFeedWithData:responseObject error:&error];
-//
-//        __block RGChannel *appFeed = nil;
-//        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-//            
-//            NSString *feedTitle = [feed title];
-//            appFeed = [RGChannel feedWithName:feedTitle inContext:localContext];
-//            [appFeed MR_importValuesForKeysWithObject:feed];
-//            
-//        }];
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-////        <#code#>
-//    }];
-//}
-
-
-//- (void)reloadAllChannels {
-//    DDLogInfo(@"%s", __FUNCTION__);
-//
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lastBuildDate < %@", [[NSDate date] dateByAddingTimeInterval:-100]];
-//    
-//    NSArray *allChannels = [RGChannel MR_findAllWithPredicate:predicate];
-//    [allChannels enumerateObjectsUsingBlock:^(RGChannel *channel, NSUInteger idx, BOOL *stop) {
-//        NSAssert([channel isKindOfClass:[RGChannel class]], @"wrong class");
-//        DDLogInfo(@"%s: channel.link=%@  channel.title=%@", __FUNCTION__, channel.link, channel.title);
-//
-//        [self reloadChannel:channel];
-//    }];
-//}
 
 
 - (void)loadDataURLString:(NSString *)theURLString {
@@ -141,11 +90,9 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
             
         }
-        //else self.dataEntries = nil;
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        self.dataEntries = nil;
-        
+            // todoRG - error handling?
     }];
 }
 
@@ -182,6 +129,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
             self.configDataEntries = nil;
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        // todoRG - error handling?
         self.configDataEntries = nil;
         
     }];
