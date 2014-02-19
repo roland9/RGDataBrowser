@@ -48,6 +48,8 @@
 		AB42D8C718AA9515000B5AA0 /* RGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB42D89018AA9515000B5AA0 /* RGTableViewController.m */; };
 		AB42D8E918AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB42D8E718AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld */; };
 		AB42D8EA18AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB42D8E718AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld */; };
+		AB7B10D818B23CC6007AEE01 /* CountriesFlags.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */; };
+		AB7B10D918B23CC6007AEE01 /* CountriesFlags.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */; };
 		ABFA866318AD2B7D00A17202 /* RGSampleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,7 @@
 		AB42D89018AA9515000B5AA0 /* RGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGTableViewController.m; sourceTree = "<group>"; };
 		AB42D89118AA9515000B5AA0 /* RGBaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBaseTVC.h; sourceTree = "<group>"; };
 		AB42D8E818AA966E000B5AA0 /* RGRSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RGRSS.xcdatamodel; sourceTree = "<group>"; };
+		AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CountriesFlags.json; path = RGDataBrowser/CountriesFlags.json; sourceTree = SOURCE_ROOT; };
 		ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSampleSpec.m; sourceTree = "<group>"; };
 		F66F15D3C85644A6B31DA172 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -227,6 +230,7 @@
 			children = (
 				AB42D85018AA908F000B5AA0 /* RGDataBrowserTests.m */,
 				ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */,
+				AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */,
 				AB42D84B18AA908F000B5AA0 /* Supporting Files */,
 			);
 			path = RGDataBrowserTests;
@@ -359,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7B10D818B23CC6007AEE01 /* CountriesFlags.json in Resources */,
 				AB42D83218AA908F000B5AA0 /* Main_iPad.storyboard in Resources */,
 				AB42D83D18AA908F000B5AA0 /* Images.xcassets in Resources */,
 				AB42D82F18AA908F000B5AA0 /* Main_iPhone.storyboard in Resources */,
@@ -371,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7B10D918B23CC6007AEE01 /* CountriesFlags.json in Resources */,
 				AB42D84F18AA908F000B5AA0 /* InfoPlist.strings in Resources */,
 				AB42D8C318AA9515000B5AA0 /* RGItemCell.xib in Resources */,
 			);
@@ -666,6 +672,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = "RGDataBrowserTests/RGDataBrowserTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

@@ -115,13 +115,13 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
         NSAssert([entries isKindOfClass:[NSArray class]], @"expected array");
         DDLogInfo(@"%s: count=%lu", __FUNCTION__, (unsigned long)[entries count]);
         DDLogVerbose(@"%s: entries=%@", __FUNCTION__, entries);
-
+        
         NSDictionary *numberOfSubentriesDict = [self getNumberOfSubentries:entries];
-
-        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+        
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
             
             [RGObject MR_deleteAllMatchingPredicate:[NSPredicate predicateWithValue:YES]];
-
+            
             [entries enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
                 NSAssert([dict isKindOfClass:[NSDictionary class]], @"inconsistent");
                 
@@ -137,7 +137,6 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
             }];
         }];
     }
-    
 }
 
 

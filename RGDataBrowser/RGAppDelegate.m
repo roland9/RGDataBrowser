@@ -9,6 +9,7 @@
 #import "RGAppDelegate.h"
 #import <CocoaLumberjack/DDASLLogger.h>
 #import <CocoaLumberjack/DDTTYLogger.h>
+#import "RGFeedManager.h"
 #import "DDLog.h"
 
 
@@ -24,16 +25,26 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
     // setup Core Data stack
+#warning that doesn't work - why?
+    //#ifdef KIWITESTING
+    //        [MagicalRecord setupCoreDataStackWithInMemoryStore];
+    //#else
+    
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"RGRSS.sqlite"];
     
+    //#endif
+    
+    [[RGFeedManager sharedRGFeedManager] loadDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od6/public/values?alt=json"];
+    [[RGFeedManager sharedRGFeedManager] loadConfigDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od7/public/values?alt=json"];
+//    [[RGFeedManager sharedRGFeedManager] loadDataFileString:@"CountriesFlags" extension:@"json"];
+
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
