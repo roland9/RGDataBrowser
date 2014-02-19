@@ -21,6 +21,7 @@
 
 - (void)loadDataURLString:(NSString *)theURLString;
 - (void)loadConfigDataURLString:(NSString *)theURLString;
+- (void)loadDataFileString:(NSString *)theFileString extension:(NSString *)theExtension;
 
 
 + (id)sharedRGFeedManager;

@@ -15,7 +15,7 @@
 #import "DDLog.h"
 
 #ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+static const int ddLogLevel = LOG_LEVEL_INFO;
 #else
 static const int ddLogLevel = LOG_LEVEL_ERROR;
 #endif
@@ -62,12 +62,17 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
             NSArray *entries = json[@"feed"][@"entry"];
             NSAssert([entries isKindOfClass:[NSArray class]], @"expected array");
+            DDLogInfo(@"%s: count=%lu", __FUNCTION__, (unsigned long)[entries count]);
+            DDLogVerbose(@"%s: entries=%@", __FUNCTION__, entries);
             
-#warning do we really have to clear it out here? that breaks the tests...
-//            [RGObject MR_deleteAllMatchingPredicate:[NSPredicate predicateWithValue:YES]];
+            // find the number of subentries; store in a mutable dictionary so we can access it before creating the object in Core Data
+            NSDictionary *numberOfSubentriesDict = [self getNumberOfSubentries:entries];
             
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
+                // first, clear out previous entries (maybe later we can merge them)
+                [RGObject MR_deleteAllMatchingPredicate:[NSPredicate predicateWithValue:YES]];
+                
                 [entries enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
                     NSAssert([dict isKindOfClass:[NSDictionary class]], @"inconsistent");
 
@@ -79,21 +84,60 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
                     object.imageThumbnail = dict[@"gsx$imagethumbnail"][@"$t"];
                     object.articleLink = dict[@"gsx$articlelink"][@"$t"];
                     object.detailHTML = dict[@"gsx$detailhtml"][@"$t"];
+                    object.numberOfSubentries = numberOfSubentriesDict[object.itemId];
                 }];
                 
-            } completion:^(BOOL success, NSError *error) {
-                
-                [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
-                    [self updateSubentriesWithContext:localContext];
-                }];
             }];
-
             
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
             // todoRG - error handling?
     }];
+}
+
+
+- (void)loadDataFileString:(NSString *)theFileString extension:(NSString *)theExtension {
+    DDLogInfo(@"%s: url=%@", __FUNCTION__, theFileString);
+    
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:theFileString withExtension:theExtension];
+    
+    NSError *error;
+    NSData *fileData = [NSData dataWithContentsOfURL:fileURL options:NSDataReadingUncached error:&error];
+    id JSONObject = [NSJSONSerialization JSONObjectWithData:fileData options:NSJSONReadingAllowFragments error:&error];
+    
+    if (!error) {
+        
+        NSAssert([JSONObject isKindOfClass:[NSDictionary class]], @"inconsistent");
+        NSDictionary *json = (NSDictionary *)JSONObject;
+        
+        NSArray *entries = json[@"feed"][@"entry"];
+        NSAssert([entries isKindOfClass:[NSArray class]], @"expected array");
+        DDLogInfo(@"%s: count=%lu", __FUNCTION__, (unsigned long)[entries count]);
+        DDLogVerbose(@"%s: entries=%@", __FUNCTION__, entries);
+
+        NSDictionary *numberOfSubentriesDict = [self getNumberOfSubentries:entries];
+
+        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
+            
+            [RGObject MR_deleteAllMatchingPredicate:[NSPredicate predicateWithValue:YES]];
+
+            [entries enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
+                NSAssert([dict isKindOfClass:[NSDictionary class]], @"inconsistent");
+                
+                RGObject *object = [RGObject objectWithItemId:dict[@"gsx$itemid"][@"$t"] inContext:localContext];
+                object.parentId = dict[@"gsx$parentid"][@"$t"];
+                object.itemDescription = dict[@"gsx$itemdescription"][@"$t"];
+                object.nextLevel = dict[@"gsx$nextlevel"][@"$t"];
+                object.imageFull = dict[@"gsx$imagefull"][@"$t"];
+                object.imageThumbnail = dict[@"gsx$imagethumbnail"][@"$t"];
+                object.articleLink = dict[@"gsx$articlelink"][@"$t"];
+                object.detailHTML = dict[@"gsx$detailhtml"][@"$t"];
+                object.numberOfSubentries = numberOfSubentriesDict[object.itemId];
+            }];
+        }];
+    }
+    
 }
 
 
@@ -135,24 +179,22 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     }];
 }
 
-//- (void)createTestEnvironment {
-//    DDLogInfo(@"%s", __FUNCTION__);
-//
-//    [self initDataSample:@"rss2sample.xml" type:@"rss"];
-//    [self initDataSample:@"spiegelIndex" type:@"rss"];
-//}
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 # pragma mark - Private
 
-- (void)updateSubentriesWithContext:(NSManagedObjectContext *)context {
+- (NSDictionary *)getNumberOfSubentries:(NSArray *)entries {
+    __block NSMutableDictionary *numberOfSubentriesDict = [NSMutableDictionary dictionary];
     
-    [[RGObject MR_findAll] enumerateObjectsUsingBlock:^(RGObject *obj, NSUInteger idx, BOOL *stop) {
-#warning optimize - check if been calculated before
-        RGObject *object = [RGObject objectWithItemId:obj.itemId inContext:context];
-        object.numberOfSubentries = [RGObject MR_numberOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"parentId = %@", obj.itemId]];
+    [entries enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
+        NSAssert([dict isKindOfClass:[NSDictionary class]], @"inconsistent");
+        NSArray *subEntries = [entries filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"gsx$parentid"][@"$t"] isEqualToString:dict[@"gsx$itemid"][@"$t"]];
+        }]];
+        numberOfSubentriesDict[dict[@"gsx$itemid"][@"$t"]] = @([subEntries count]);
     }];
+    
+    return numberOfSubentriesDict;
 }
 
 
@@ -205,12 +247,12 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 - (id) init {
     self = [super init];
-    if (self) {
-        [self loadDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od6/public/values?alt=json"];
-        [self loadConfigDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od7/public/values?alt=json"];
+    if (self) {        
     }
     return self;
 }
+
+
 
 
 + (id)sharedRGFeedManager

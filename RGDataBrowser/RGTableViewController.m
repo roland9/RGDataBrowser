@@ -28,7 +28,6 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 @interface RGTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
-//@property (nonatomic, strong) RGArrayDataSource *itemsArrayDataSource;
 @property (nonatomic, strong) RGDetailViewController *detailViewController;
 
 @end
@@ -54,6 +53,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     [super awakeFromNib];
     self.parentId = @"0";
 
+    // because this is the first call and calls init, it also initializes the Core Data stack
     [[RGFeedManager sharedRGFeedManager] addObserver:self forKeyPath:@"configDataEntries" options:NSKeyValueObservingOptionNew context:nil];
 }
 
