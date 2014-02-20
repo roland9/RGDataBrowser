@@ -125,6 +125,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     
     self.searchDataSource = [[RGSearchDataSource alloc] init];
     self.searchDisplayController.searchResultsDataSource = self.searchDataSource;
+//    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
 }
 
 
