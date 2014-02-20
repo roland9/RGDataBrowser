@@ -82,7 +82,8 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [self updateFilteredContentForSearchString:searchString type:nil];
+	// Update the filtered array based on the search text and scope.
+    self.searchDataSource.searchResults = [[RGFeedManager sharedRGFeedManager] itemsWithSearchString:searchString parentId:self.parentId];
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;
@@ -91,13 +92,6 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 # pragma mark - Private
-
-- (void)updateFilteredContentForSearchString:(NSString *)searchString type:(NSString *)typeName
-{
-	// Update the filtered array based on the search text and scope.
-    self.searchDataSource.searchResults = [[RGFeedManager sharedRGFeedManager] itemsWithSearchString:searchString];
-}
-
 
 // KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
