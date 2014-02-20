@@ -43,6 +43,20 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 }
 
 
+- (NSArray *)itemsWithSearchString:(NSString *)theSearchString {
+    DDLogInfo(@"%s: searchString=%@", __FUNCTION__, theSearchString);
+    
+    if ((theSearchString == nil) || [theSearchString length] == 0)
+        return [RGObject MR_findAll];
+    
+    // Search all entries in DB for items whose itemDescription matches searchString
+    NSArray *searchResult = [RGObject MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"itemDescription contains[cd] %@", theSearchString]];
+    DDLogVerbose(@"%s: new search results=%@", __FUNCTION__, searchResult);
+    
+    return searchResult;
+}
+
+
 - (RGObject *)objectWithItemId:(NSString *)theItemId {
     DDLogInfo(@"%s: itemId=%@", __FUNCTION__, theItemId);
 

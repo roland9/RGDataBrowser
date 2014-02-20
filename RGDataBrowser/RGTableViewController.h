@@ -8,7 +8,7 @@
 
 #import "RGBaseTVC.h"
 
-@interface RGTableViewController : RGBaseTVC
+@interface RGTableViewController : RGBaseTVC <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic, copy)   NSString   *parentId;
 @property (nonatomic, copy)   NSString   *levelDescription;

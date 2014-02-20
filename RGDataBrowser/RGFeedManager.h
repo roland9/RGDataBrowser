@@ -17,6 +17,7 @@
 
 - (NSArray *)dataEntries;
 - (NSArray *)itemsWithParentId:(NSString *)theParentId;
+- (NSArray *)itemsWithSearchString:(NSString *)theSearchString;
 - (RGObject *)objectWithItemId:(NSString *)theItemId;
 
 - (void)loadDataURLString:(NSString *)theURLString;

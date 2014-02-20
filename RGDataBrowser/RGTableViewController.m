@@ -14,6 +14,7 @@
 #import "RGItemCell+ConfigureForItem.h"
 #import "RGObject.h"
 #import "RGConfigData.h"
+#import "RGSearchDataSource.h"
 #import "DDLog.h"
 
 #ifdef DEBUG
@@ -29,6 +30,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 @interface RGTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) RGDetailViewController *detailViewController;
+@property (nonatomic, strong) RGSearchDataSource *searchDataSource;
 
 @end
 
@@ -58,9 +60,46 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 }
 
 
+////////////////////////////////////////////////////////////////////
+# pragma mark - SearchDisplayDelegate
+
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    DDLogInfo(@"%s", __FUNCTION__);
+
+}
+
+//- (void) searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller {
+//}
+
+//- (void) searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+//}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
+    DDLogInfo(@"%s", __FUNCTION__);
+
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self updateFilteredContentForSearchString:searchString type:nil];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 # pragma mark - Private
 
+- (void)updateFilteredContentForSearchString:(NSString *)searchString type:(NSString *)typeName
+{
+	// Update the filtered array based on the search text and scope.
+    self.searchDataSource.searchResults = [[RGFeedManager sharedRGFeedManager] itemsWithSearchString:searchString];
+}
+
+
+// KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     DDLogInfo(@"%s: keyPath=%@", __FUNCTION__, keyPath);
     
@@ -84,6 +123,8 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     NSString *myTitle = self.levelDescription;
     self.navigationItem.title = myTitle;
     
+    self.searchDataSource = [[RGSearchDataSource alloc] init];
+    self.searchDisplayController.searchResultsDataSource = self.searchDataSource;
 }
 
 
@@ -121,7 +162,18 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RGObject *obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    RGObject *obj;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        DDLogInfo(@"%s: search results table view", __FUNCTION__);
+#warning it could happen that the data source has been changed by the time we get here - async network calls?
+        obj = self.searchDataSource.searchResults[indexPath.row];
+        
+    } else if (tableView == self.tableView) {
+        DDLogInfo(@"%s: main table view", __FUNCTION__);
+        
+        obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
     
     if ([obj.numberOfSubentries unsignedIntegerValue] > 0) {
         // we have usbentries -> navigate to next level list
@@ -140,7 +192,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             [self.detailViewController setDetailItem:@{@"title": obj.itemDescription, @"html": obj.detailHTML}];
-
+            
         } else {
             RGDetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"RGDetailViewController"];
             NSAssert([detailVC isKindOfClass:[RGDetailViewController class]], @"inconsistent storyboard");
