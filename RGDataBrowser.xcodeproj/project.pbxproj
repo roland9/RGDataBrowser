@@ -160,6 +160,7 @@
 			children = (
 				AB42D88518AA9515000B5AA0 /* RGConfigData.m */,
 				AB42D88718AA9515000B5AA0 /* RGFeedManager.m */,
+				ABD0378318B68897008D6BCE /* RGSearchDataSource.m */,
 				AB42D88918AA9515000B5AA0 /* RGHTTPSessionManager.m */,
 			);
 			name = Managers;
@@ -203,8 +204,6 @@
 		AB42D82118AA908F000B5AA0 /* RGDataBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				ABD0378218B68897008D6BCE /* RGSearchDataSource.h */,
-				ABD0378318B68897008D6BCE /* RGSearchDataSource.m */,
 				AB42D8E618AA9523000B5AA0 /* Includes */,
 				AB42D82B18AA908F000B5AA0 /* RGAppDelegate.m */,
 				AB42D82D18AA908F000B5AA0 /* Main_iPhone.storyboard */,
@@ -265,6 +264,7 @@
 		AB42D8E618AA9523000B5AA0 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
+				ABD0378218B68897008D6BCE /* RGSearchDataSource.h */,
 				AB42D89118AA9515000B5AA0 /* RGBaseTVC.h */,
 				AB42D82A18AA908F000B5AA0 /* RGAppDelegate.h */,
 				AB42D88418AA9515000B5AA0 /* RGConfigData.h */,
@@ -625,6 +625,7 @@
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowser/RGDataBrowser-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A2712E86-7CBC-4E99-B543-1B647E3BFFEE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -639,6 +640,7 @@
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowser/RGDataBrowser-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A2712E86-7CBC-4E99-B543-1B647E3BFFEE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
