@@ -116,6 +116,16 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 }
 
 
+- (void)startNetworkCallsOnce {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[RGFeedManager sharedRGFeedManager] loadDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od6/public/values?alt=json"];
+        [[RGFeedManager sharedRGFeedManager] loadConfigDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od7/public/values?alt=json"];
+    });
+
+}
+
+
 - (void)loadDataFileString:(NSString *)theFileString extension:(NSString *)theExtension {
     DDLogInfo(@"%s: url=%@", __FUNCTION__, theFileString);
     

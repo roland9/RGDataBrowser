@@ -44,6 +44,8 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     self.splitViewController.delegate = self.detailViewController;
     
     [self setupTableView];
+    
+    [[RGFeedManager sharedRGFeedManager] startNetworkCallsOnce];
 }
 
 - (void)dealloc {

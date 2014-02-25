@@ -188,29 +188,6 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 }
 
 
-- (void)contextDidChange:(NSNotification *)aNotification {
-    DDLogInfo(@"%s", __FUNCTION__);
-
-    NSManagedObjectContext *savedContext = [aNotification object];
-    
-    // ignore change notifications for the main MOC
-    if ([NSManagedObjectContext MR_defaultContext] == savedContext)
-    {
-        return;
-    }
-    
-    if ([NSManagedObjectContext MR_defaultContext].persistentStoreCoordinator != savedContext.persistentStoreCoordinator)
-    {
-        // that's another database
-        return;
-    }
-    
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        [[NSManagedObjectContext MR_defaultContext] mergeChangesFromContextDidSaveNotification:aNotification];
-    });
-}
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 # pragma mark - Class specific FRC setup
 
@@ -244,14 +221,6 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 # pragma mark - Object Life Cycle
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if ( (self = [super initWithCoder:aDecoder]) ) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contextDidChange:) name:NSManagedObjectContextDidSaveNotification object:nil];
-    }
-    return self;
-}
-
 
 - (void)viewDidUnload {
     [super viewDidUnload];

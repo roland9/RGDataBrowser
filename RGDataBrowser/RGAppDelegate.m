@@ -38,8 +38,8 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     
     //#endif
     
-    [[RGFeedManager sharedRGFeedManager] loadDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od6/public/values?alt=json"];
-    [[RGFeedManager sharedRGFeedManager] loadConfigDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od7/public/values?alt=json"];
+//    [[RGFeedManager sharedRGFeedManager] loadDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od6/public/values?alt=json"];
+//    [[RGFeedManager sharedRGFeedManager] loadConfigDataURLString:@"0Apmsn6hlyPHudHUxSHJ1YzhPVjV4VEJTTkl6aGhnclE/od7/public/values?alt=json"];
 //    [[RGFeedManager sharedRGFeedManager] loadDataFileString:@"CountriesFlags" extension:@"json"];
 
     return YES;
