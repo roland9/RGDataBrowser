@@ -50,6 +50,8 @@
 		AB42D8EA18AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB42D8E718AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld */; };
 		AB7B10D818B23CC6007AEE01 /* CountriesFlags.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */; };
 		AB7B10D918B23CC6007AEE01 /* CountriesFlags.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */; };
+		ABBD0F9C18BCF85A00C3B2AA /* RGBaseCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */; };
+		ABBD0F9D18BCF85A00C3B2AA /* RGBaseCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */; };
 		ABD0378418B68897008D6BCE /* RGSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD0378318B68897008D6BCE /* RGSearchDataSource.m */; };
 		ABD0378518B68897008D6BCE /* RGSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD0378318B68897008D6BCE /* RGSearchDataSource.m */; };
 		ABFA866318AD2B7D00A17202 /* RGSampleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */; };
@@ -111,6 +113,8 @@
 		AB42D89118AA9515000B5AA0 /* RGBaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBaseTVC.h; sourceTree = "<group>"; };
 		AB42D8E818AA966E000B5AA0 /* RGRSS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RGRSS.xcdatamodel; sourceTree = "<group>"; };
 		AB7B10D718B23CC6007AEE01 /* CountriesFlags.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CountriesFlags.json; path = RGDataBrowser/CountriesFlags.json; sourceTree = SOURCE_ROOT; };
+		ABBD0F9A18BCF85A00C3B2AA /* RGBaseCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBaseCVC.h; sourceTree = "<group>"; };
+		ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBaseCVC.m; sourceTree = "<group>"; };
 		ABD0378218B68897008D6BCE /* RGSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSearchDataSource.h; sourceTree = "<group>"; };
 		ABD0378318B68897008D6BCE /* RGSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSearchDataSource.m; sourceTree = "<group>"; };
 		ABFA866218AD2B7D00A17202 /* RGSampleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGSampleSpec.m; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 		AB42D8E618AA9523000B5AA0 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
+				ABBD0F9A18BCF85A00C3B2AA /* RGBaseCVC.h */,
 				ABD0378218B68897008D6BCE /* RGSearchDataSource.h */,
 				AB42D89118AA9515000B5AA0 /* RGBaseTVC.h */,
 				AB42D82A18AA908F000B5AA0 /* RGAppDelegate.h */,
@@ -283,6 +288,7 @@
 			children = (
 				AB42D88318AA9515000B5AA0 /* RGBaseTVC.m */,
 				AB42D89018AA9515000B5AA0 /* RGTableViewController.m */,
+				ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */,
 				AB42D83A18AA908F000B5AA0 /* RGDetailViewController.m */,
 			);
 			name = VCs;
@@ -465,6 +471,7 @@
 				AB42D8C418AA9515000B5AA0 /* RGItemCell+ConfigureForItem.m in Sources */,
 				AB42D8E918AA966E000B5AA0 /* RGDataBrowser.xcdatamodeld in Sources */,
 				AB42D8B818AA9515000B5AA0 /* RGBaseTVC.m in Sources */,
+				ABBD0F9C18BCF85A00C3B2AA /* RGBaseCVC.m in Sources */,
 				AB42D8BA18AA9515000B5AA0 /* RGConfigData.m in Sources */,
 				AB42D8C018AA9515000B5AA0 /* RGItemCell.m in Sources */,
 				ABD0378418B68897008D6BCE /* RGSearchDataSource.m in Sources */,
@@ -483,6 +490,7 @@
 				AB42D8BD18AA9515000B5AA0 /* RGFeedManager.m in Sources */,
 				ABD0378518B68897008D6BCE /* RGSearchDataSource.m in Sources */,
 				AB42D8BB18AA9515000B5AA0 /* RGConfigData.m in Sources */,
+				ABBD0F9D18BCF85A00C3B2AA /* RGBaseCVC.m in Sources */,
 				AB42D85118AA908F000B5AA0 /* RGDataBrowserTests.m in Sources */,
 				AB42D8C718AA9515000B5AA0 /* RGTableViewController.m in Sources */,
 				AB42D8BF18AA9515000B5AA0 /* RGHTTPSessionManager.m in Sources */,
