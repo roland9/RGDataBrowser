@@ -1,16 +1,16 @@
 //
-//  RGTableViewController.m
+//  RGCollectionViewController.m
 //  RGDataBrowser
 //
-//  Created by Roland on 07/02/2014.
-//  Copyright (c) 2014 RG. All rights reserved.
+//  Created by RolandG on 26/02/2014.
+//  Copyright (c) 2014 mapps. All rights reserved.
 //
 
-#import "RGTableViewController.h"
+#import "RGCollectionViewController.h"
 #import "RGDetailViewController.h"
 #import "RGFeedManager.h"
-#import "RGItemCell.h"
-#import "RGItemCell+ConfigureForItem.h"
+#import "RGCollectionItemCell.h"
+#import "RGCollectionItemCell+ConfigureForItem.h"
 #import "RGObject.h"
 #import "RGConfigData.h"
 #import "RGSearchDataSource.h"
@@ -26,7 +26,9 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 static NSString * const ItemCellIdentifier = @"ItemCell";
 
 
-@interface RGTableViewController () <UITableViewDataSource, UITableViewDelegate>
+
+
+@interface RGCollectionViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) RGDetailViewController *detailViewController;
 @property (nonatomic, strong) RGSearchDataSource *searchDataSource;
@@ -34,7 +36,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 @end
 
 
-@implementation RGTableViewController
+@implementation RGCollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +57,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.parentId = @"0";
-
+    
     // because this is the first call and calls init, it also initializes the Core Data stack
     [[RGFeedManager sharedRGFeedManager] addObserver:self forKeyPath:@"configDataEntries" options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -66,7 +68,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 - (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
     DDLogInfo(@"%s", __FUNCTION__);
-
+    
 }
 
 //- (void) searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller {
@@ -77,7 +79,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
     DDLogInfo(@"%s", __FUNCTION__);
-
+    
 }
 
 
@@ -103,24 +105,24 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
         
         NSArray *initialLevelConfig = [[[RGFeedManager sharedRGFeedManager] configDataEntries] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K = %@", @"configItem", @"InitialLevel"]];
         if ([initialLevelConfig count] > 0)
-        self.navigationItem.title = ((RGConfigData *)initialLevelConfig[0]).configValue;
+            self.navigationItem.title = ((RGConfigData *)initialLevelConfig[0]).configValue;
     }
 }
 
 
 - (void)setupTableView {
-    [self.tableView registerNib:[RGItemCell nib] forCellReuseIdentifier:[self cellIdentifier]];
-
+    [self.collectionView registerNib:[RGCollectionItemCell nib] forCellWithReuseIdentifier:[self cellIdentifier]];
+    
     // kick off data loading
     [RGFeedManager sharedRGFeedManager];
-
+    
     // for the initial level, get the description from the config sheet in the database (use KVO to find out when it's available); for others, it's set by the parent table view controller
     NSString *myTitle = self.levelDescription;
     self.navigationItem.title = myTitle;
     
     self.searchDataSource = [[RGSearchDataSource alloc] init];
     self.searchDisplayController.searchResultsDataSource = self.searchDataSource;
-//    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
+    //    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
 }
 
 
@@ -140,9 +142,9 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSAssert([object isKindOfClass:[RGObject class]], @"expected RGObject");
-    NSAssert([cell isKindOfClass:[RGItemCell class]], @"expected RGItemCell");
+    NSAssert([cell isKindOfClass:[RGCollectionItemCell class]], @"expected RGItemCell");
     
-    [(RGItemCell *)cell configureForItem:(RGObject *)object];
+    [(RGCollectionItemCell *)cell configureForItem:(RGObject *)object];
 }
 
 - (NSString *)cellIdentifier {
@@ -156,30 +158,20 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
 
 #pragma mark UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     RGObject *obj;
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        DDLogInfo(@"%s: search results table view", __FUNCTION__);
-#warning it could happen that the data source has been changed by the time we get here - async network calls?
-        obj = self.searchDataSource.searchResults[indexPath.row];
-        
-    } else if (tableView == self.tableView) {
-        DDLogInfo(@"%s: main table view", __FUNCTION__);
-        
-        obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
+    obj = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     if ([obj.numberOfSubentries unsignedIntegerValue] > 0) {
         // we have usbentries -> navigate to next level list
-        RGTableViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"RGTableViewController"];
-        NSAssert([tvc isKindOfClass:[RGTableViewController class]], @"expected TVC");
+        RGCollectionViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"RGCollectionViewController"];
+        NSAssert([cvc isKindOfClass:[RGCollectionViewController class]], @"expected TVC");
         
-        tvc.parentId = obj.itemId;
-        tvc.levelDescription = obj.nextLevel;
+        cvc.parentId = obj.itemId;
+        cvc.levelDescription = obj.nextLevel;
         
-        [self.navigationController pushViewController:tvc animated:YES];
+        [self.navigationController pushViewController:cvc animated:YES];
         
     } else if ([obj.numberOfSubentries unsignedIntegerValue] == 0  &&
                [obj.detailHTML length] > 0) {
