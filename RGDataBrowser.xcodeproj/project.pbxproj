@@ -58,6 +58,8 @@
 		ABABA67218BEA26400A15DA1 /* RGCollectionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABABA67018BEA26400A15DA1 /* RGCollectionItemCell.xib */; };
 		ABABA67518BEA3C900A15DA1 /* RGCollectionItemCell+ConfigureForItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABA67418BEA3C900A15DA1 /* RGCollectionItemCell+ConfigureForItem.m */; };
 		ABABA67618BEA3C900A15DA1 /* RGCollectionItemCell+ConfigureForItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ABABA67418BEA3C900A15DA1 /* RGCollectionItemCell+ConfigureForItem.m */; };
+		ABABA67818BEA70A00A15DA1 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABABA67718BEA70A00A15DA1 /* Reveal.framework */; };
+		ABABA67918BEA70A00A15DA1 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABABA67718BEA70A00A15DA1 /* Reveal.framework */; };
 		ABBD0F9C18BCF85A00C3B2AA /* RGBaseCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */; };
 		ABBD0F9D18BCF85A00C3B2AA /* RGBaseCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */; };
 		ABD0378418B68897008D6BCE /* RGSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD0378318B68897008D6BCE /* RGSearchDataSource.m */; };
@@ -128,6 +130,7 @@
 		ABABA67018BEA26400A15DA1 /* RGCollectionItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGCollectionItemCell.xib; sourceTree = "<group>"; };
 		ABABA67318BEA3C900A15DA1 /* RGCollectionItemCell+ConfigureForItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RGCollectionItemCell+ConfigureForItem.h"; sourceTree = "<group>"; };
 		ABABA67418BEA3C900A15DA1 /* RGCollectionItemCell+ConfigureForItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RGCollectionItemCell+ConfigureForItem.m"; sourceTree = "<group>"; };
+		ABABA67718BEA70A00A15DA1 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		ABBD0F9A18BCF85A00C3B2AA /* RGBaseCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBaseCVC.h; sourceTree = "<group>"; };
 		ABBD0F9B18BCF85A00C3B2AA /* RGBaseCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBaseCVC.m; sourceTree = "<group>"; };
 		ABD0378218B68897008D6BCE /* RGSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGSearchDataSource.h; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 				AB42D81C18AA908F000B5AA0 /* CoreGraphics.framework in Frameworks */,
 				AB42D82018AA908F000B5AA0 /* CoreData.framework in Frameworks */,
 				AB42D81E18AA908F000B5AA0 /* UIKit.framework in Frameworks */,
+				ABABA67818BEA70A00A15DA1 /* Reveal.framework in Frameworks */,
 				AB42D81A18AA908F000B5AA0 /* Foundation.framework in Frameworks */,
 				0E408E08B2F341839688AD69 /* libPods.a in Frameworks */,
 			);
@@ -156,6 +160,7 @@
 				AB42D84418AA908F000B5AA0 /* XCTest.framework in Frameworks */,
 				AB42D84718AA908F000B5AA0 /* CoreData.framework in Frameworks */,
 				AB42D84618AA908F000B5AA0 /* UIKit.framework in Frameworks */,
+				ABABA67918BEA70A00A15DA1 /* Reveal.framework in Frameworks */,
 				AB42D84518AA908F000B5AA0 /* Foundation.framework in Frameworks */,
 				7F764D0EE3234D979C7664B2 /* libPods-RGDataBrowserTests.a in Frameworks */,
 			);
@@ -213,6 +218,7 @@
 		AB42D81818AA908F000B5AA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABABA67718BEA70A00A15DA1 /* Reveal.framework */,
 				AB42D81918AA908F000B5AA0 /* Foundation.framework */,
 				AB42D81B18AA908F000B5AA0 /* CoreGraphics.framework */,
 				AB42D81D18AA908F000B5AA0 /* UIKit.framework */,
@@ -659,6 +665,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rolandg/Documents/RGDataBrowser,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowser/RGDataBrowser-Info.plist";
@@ -674,6 +684,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rolandg/Documents/RGDataBrowser,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowser/RGDataBrowser-Info.plist";
@@ -693,6 +707,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/rolandg/Documents/RGDataBrowser,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
@@ -717,6 +732,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/rolandg/Documents/RGDataBrowser,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";

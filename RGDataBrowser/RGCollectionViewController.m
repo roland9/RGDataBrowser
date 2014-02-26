@@ -138,8 +138,8 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     return @"RGObject";
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
+- (void)configureCollectionCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSAssert([object isKindOfClass:[RGObject class]], @"expected RGObject");
     NSAssert([cell isKindOfClass:[RGCollectionItemCell class]], @"expected RGItemCell");

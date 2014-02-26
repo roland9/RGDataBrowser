@@ -85,6 +85,8 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    DDLogInfo(@"%s: row=%d", __FUNCTION__, indexPath.row);
+
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self cellIdentifier] forIndexPath:indexPath];
     [self configureCollectionCell:cell atIndexPath:indexPath];
 
