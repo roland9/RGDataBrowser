@@ -33,7 +33,10 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     // setup Core Data stack
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"RGRSS.sqlite"];
     
+    [Intercom enableLogging];
     [Intercom setApiKey:kIntercomAPIKey forAppId:kIntercomAppId];
+    [Intercom registerForRemoteNotifications];
+    [Intercom setPresentationMode:ICMPresentationModeBottomRight];
     return YES;
 }
 							
@@ -57,11 +60,39 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [application setApplicationIconBadgeNumber:0];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]){ //iOS8
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge |
+                                                                                                    UIRemoteNotificationTypeSound |
+                                                                                                    UIRemoteNotificationTypeAlert)
+                                                                                        categories:nil]];
+        [application registerForRemoteNotifications];
+    }else{
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
+         (UIRemoteNotificationTypeBadge |
+          UIRemoteNotificationTypeSound |
+          UIRemoteNotificationTypeAlert)];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [MagicalRecord cleanUp];
+}
+
+#pragma mark -
+#pragma mark Push notification registration
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"Registered device token for push notifications: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Failed to register for push notifications: error=%@", error.localizedDescription);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Host app received push notification: userInfo=%@", userInfo);
 }
 
 @end

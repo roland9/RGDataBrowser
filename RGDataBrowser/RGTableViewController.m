@@ -14,6 +14,7 @@
 #import "RGItemCell+ConfigureForItem.h"
 #import "RGObject.h"
 #import "RGConfigData.h"
+#import <Intercom.h>
 #import <DDLogMacros.h> 
 
 #ifdef DEBUG
@@ -43,6 +44,16 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     self.splitViewController.delegate = self.detailViewController;
     
     [self setupTableView];
+    
+    [Intercom beginSessionForUserWithEmail:@"roland+test@intercom.io" completion:^(NSError *error) {
+        if (!error) {
+            DDLogInfo(@"%s: updated", __FUNCTION__);
+
+        } else {
+            DDLogError(@"%s: error=%@", __FUNCTION__, error.localizedDescription);
+
+        }
+    }];
 }
 
 - (void)dealloc {
