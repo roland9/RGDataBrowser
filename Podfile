@@ -5,7 +5,8 @@ pod 'MagicalRecord'
 pod 'CocoaLumberjack'
 pod 'NullSafe'
 pod 'BlockRSSParser'
+pod 'Intercom', '~> 2.0.0'
 
 target :RGDataBrowserTests, :exclusive => true do
-	pod 'Kiwi/XCTest'
+	pod 'Kiwi'
 end

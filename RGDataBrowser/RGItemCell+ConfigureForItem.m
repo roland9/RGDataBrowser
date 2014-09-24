@@ -24,7 +24,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 @implementation RGItemCell (ConfigureForItem)
 
 - (void)configureForItem:(RGObject *)item {
-    DDLogInfo(@"%s", __FUNCTION__);
+//    DDLogInfo(@"%s", __FUNCTION__);
 
     self.itemTitleLabel.text = item.itemDescription;
     BOOL doesShowDisclosureIndicator = NO;

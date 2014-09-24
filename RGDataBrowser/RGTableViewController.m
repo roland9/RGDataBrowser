@@ -14,7 +14,7 @@
 #import "RGItemCell+ConfigureForItem.h"
 #import "RGObject.h"
 #import "RGConfigData.h"
-#import "DDLog.h"
+#import <DDLogMacros.h> 
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_INFO;

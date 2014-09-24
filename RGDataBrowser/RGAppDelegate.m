@@ -9,7 +9,7 @@
 #import "RGAppDelegate.h"
 #import <CocoaLumberjack/DDASLLogger.h>
 #import <CocoaLumberjack/DDTTYLogger.h>
-#import "DDLog.h"
+#import <DDLogMacros.h> 
 
 
 #ifdef DEBUG
@@ -27,7 +27,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-
+    
     // setup Core Data stack
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"RGRSS.sqlite"];
     

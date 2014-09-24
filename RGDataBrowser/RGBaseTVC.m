@@ -11,7 +11,7 @@
 //#import <QuartzCore/QuartzCore.h>
 //#import "GlobDefs.h"
 //#import <TSMessage.h>
-#import "DDLog.h"
+#import <DDLogMacros.h>
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_INFO;

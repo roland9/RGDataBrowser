@@ -12,7 +12,7 @@
 #import "RGObject.h"
 #import "RGConfigData.h"
 #import <CoreData+MagicalRecord.h>
-#import "DDLog.h"
+#import <DDLogMacros.h>
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
