@@ -10,7 +10,8 @@
 #import <CocoaLumberjack/DDASLLogger.h>
 #import <CocoaLumberjack/DDTTYLogger.h>
 #import <DDLogMacros.h> 
-
+#import <Intercom.h>
+#import "IntercomSettings.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_INFO;
@@ -27,10 +28,12 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
     
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    
+    DDLogInfo(@"%s", __FUNCTION__);
+
     // setup Core Data stack
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"RGRSS.sqlite"];
     
+    [Intercom setApiKey:kIntercomAPIKey forAppId:kIntercomAppId];
     return YES;
 }
 							

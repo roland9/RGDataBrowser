@@ -64,6 +64,7 @@
 /* Begin PBXFileReference section */
 		00DB856945DC49118D21B012 /* libPods-RGDataBrowserTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RGDataBrowserTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2069F75E38C74BCCB04DFE15 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		2302E97819D375B6003BDF07 /* IntercomSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntercomSettings.h; sourceTree = "<group>"; };
 		7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RGDataBrowserTests.xcconfig"; path = "Pods/Pods-RGDataBrowserTests.xcconfig"; sourceTree = "<group>"; };
 		AB42D81618AA908F000B5AA0 /* RGDataBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGDataBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB42D81918AA908F000B5AA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -207,6 +208,7 @@
 				AB42D85A18AA9507000B5AA0 /* CoreDataEntities */,
 				AB42D83C18AA908F000B5AA0 /* Images.xcassets */,
 				AB42D82218AA908F000B5AA0 /* Supporting Files */,
+				2302E97819D375B6003BDF07 /* IntercomSettings.h */,
 			);
 			path = RGDataBrowser;
 			sourceTree = "<group>";
