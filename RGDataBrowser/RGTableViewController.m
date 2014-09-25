@@ -44,7 +44,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     self.splitViewController.delegate = self.detailViewController;
     
     [self setupTableView];
-    
+
     [Intercom beginSessionForUserWithEmail:@"roland+test@intercom.io" completion:^(NSError *error) {
         if (!error) {
             DDLogInfo(@"%s: updated", __FUNCTION__);
@@ -68,6 +68,14 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     [[RGFeedManager sharedRGFeedManager] addObserver:self forKeyPath:@"configDataEntries" options:NSKeyValueObservingOptionNew context:nil];
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+# pragma mark - Intercom
+
+- (void)didSelectHelp:(id)sender {
+    DDLogInfo(@"%s", __FUNCTION__);
+
+    [Intercom presentMessageViewAsConversationList:NO];
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 # pragma mark - Private
@@ -94,7 +102,7 @@ static NSString * const ItemCellIdentifier = @"ItemCell";
     // for the initial level, get the description from the config sheet in the database (use KVO to find out when it's available); for others, it's set by the parent table view controller
     NSString *myTitle = self.levelDescription;
     self.navigationItem.title = myTitle;
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Help" style:UIBarButtonItemStyleBordered target:self action:@selector(didSelectHelp:)];
 }
 
 

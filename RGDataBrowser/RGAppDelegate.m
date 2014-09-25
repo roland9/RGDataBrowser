@@ -66,6 +66,7 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
                                                                                                     UIUserNotificationTypeSound |
                                                                                                     UIUserNotificationTypeAlert)
                                                                                         categories:nil]];
+        [application registerForRemoteNotifications];
     }else{
         [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
          (UIRemoteNotificationTypeBadge |
@@ -82,11 +83,10 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 #pragma mark -
 #pragma mark Push notification registration
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-    //register to receive notifications
-    [application registerForRemoteNotifications];
-}
+//- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+//{
+//    //register to receive notifications
+//}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"Registered device token for push notifications: %@", deviceToken);
