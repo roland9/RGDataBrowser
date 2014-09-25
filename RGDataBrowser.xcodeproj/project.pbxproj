@@ -52,6 +52,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2A698A0219D453B100E89DA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB42D80E18AA908F000B5AA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB42D81518AA908F000B5AA0;
+			remoteInfo = RGDataBrowser;
+		};
+		2A698A0419D453B200E89DA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB42D80E18AA908F000B5AA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB42D81518AA908F000B5AA0;
+			remoteInfo = RGDataBrowser;
+		};
 		AB42D84818AA908F000B5AA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AB42D80E18AA908F000B5AA0 /* Project object */;
@@ -316,6 +330,8 @@
 			);
 			dependencies = (
 				AB42D84918AA908F000B5AA0 /* PBXTargetDependency */,
+				2A698A0319D453B100E89DA6 /* PBXTargetDependency */,
+				2A698A0519D453B200E89DA6 /* PBXTargetDependency */,
 			);
 			name = RGDataBrowserTests;
 			productName = RGDataBrowserTests;
@@ -336,6 +352,7 @@
 						DevelopmentTeam = 2H43Y8J8SC;
 					};
 					AB42D84118AA908F000B5AA0 = {
+						DevelopmentTeam = 2H43Y8J8SC;
 						TestTargetID = AB42D81518AA908F000B5AA0;
 					};
 				};
@@ -489,6 +506,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2A698A0319D453B100E89DA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB42D81518AA908F000B5AA0 /* RGDataBrowser */;
+			targetProxy = 2A698A0219D453B100E89DA6 /* PBXContainerItemProxy */;
+		};
+		2A698A0519D453B200E89DA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB42D81518AA908F000B5AA0 /* RGDataBrowser */;
+			targetProxy = 2A698A0419D453B200E89DA6 /* PBXContainerItemProxy */;
+		};
 		AB42D84918AA908F000B5AA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AB42D81518AA908F000B5AA0 /* RGDataBrowser */;
@@ -566,7 +593,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f7f1890b-ab0e-436b-a79f-97e903070908";
+				PROVISIONING_PROFILE = "65b35143-c323-4dd3-9e6e-7dff5f0e39c6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -599,7 +626,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "f7f1890b-ab0e-436b-a79f-97e903070908";
+				PROVISIONING_PROFILE = "65b35143-c323-4dd3-9e6e-7dff5f0e39c6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -612,13 +639,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowser/RGDataBrowser-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -629,13 +653,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowser/RGDataBrowser-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -644,7 +665,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RGDataBrowser.app/RGDataBrowser";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -658,7 +679,7 @@
 				);
 				INFOPLIST_FILE = "RGDataBrowserTests/RGDataBrowserTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RGDataBrowser.app/RGDataBrowser";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -667,7 +688,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7474318D98DA43D390F4534E /* Pods-RGDataBrowserTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RGDataBrowser.app/RGDataBrowser";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -677,7 +698,7 @@
 				GCC_PREFIX_HEADER = "RGDataBrowser/RGDataBrowser-Prefix.pch";
 				INFOPLIST_FILE = "RGDataBrowserTests/RGDataBrowserTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RGDataBrowser.app/RGDataBrowser";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

@@ -60,13 +60,12 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [application setApplicationIconBadgeNumber:0];
+//    [application setApplicationIconBadgeNumber:0];
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]){ //iOS8
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge |
-                                                                                                    UIRemoteNotificationTypeSound |
-                                                                                                    UIRemoteNotificationTypeAlert)
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge |
+                                                                                                    UIUserNotificationTypeSound |
+                                                                                                    UIUserNotificationTypeAlert)
                                                                                         categories:nil]];
-        [application registerForRemoteNotifications];
     }else{
         [application registerForRemoteNotificationTypes:(UIRemoteNotificationType)
          (UIRemoteNotificationTypeBadge |
@@ -82,6 +81,12 @@ static const int ddLogLevel = LOG_LEVEL_ERROR;
 
 #pragma mark -
 #pragma mark Push notification registration
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"Registered device token for push notifications: %@", deviceToken);
