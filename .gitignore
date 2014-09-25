@@ -21,3 +21,5 @@ DerivedData
 Pods
 
 RGDataBrowser/IntercomSettings.h
+IntercomSettings.h
+Podfile.lock
